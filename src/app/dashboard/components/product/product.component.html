@@ -1,0 +1,187 @@
+<!-- <app-logo ></app-logo > -->
+<div class="formContainer">
+  <h4>{{ title }} Product</h4>
+  <form [formGroup]="ProductForm">
+    <div class="form-group">
+      <label for="usr">*Product Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="usr"
+        placeholder="Enter Name"
+        name="productName"
+        formControlName="productName"
+      />
+      <div
+        *ngIf="
+          ProductForm.get('productName').invalid &&
+          ProductForm.get('productName').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="ProductForm.get('productName').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="ProductForm.get('productName').hasError('minlength')"
+        >
+          <strong>Error!</strong> This field requires minimum 3 characters.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="size">*Product Size:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="size"
+        placeholder="Enter size"
+        name="productSize"
+        formControlName="productSize"
+      />
+      <div
+        *ngIf="
+          ProductForm.get('productSize').invalid &&
+          ProductForm.get('productSize').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="ProductForm.get('productSize').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="ProductForm.get('productSize').hasError('minlength')"
+        >
+          <strong>Error!</strong> This field requires minimum 3 characters.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="color">*Product Color:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="color"
+        placeholder="Enter size"
+        name="productColor"
+        formControlName="productColor"
+      />
+      <div
+        *ngIf="
+          ProductForm.get('productColor').invalid &&
+          ProductForm.get('productColor').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="ProductForm.get('productColor').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="ProductForm.get('productColor').hasError('minlength')"
+        >
+          <strong>Error!</strong> This field requires minimum 3 characters.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="price">*Product Price:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="price"
+        placeholder="Enter size"
+        name="productColor"
+        formControlName="productPrice"
+      />
+      <div
+        *ngIf="
+          ProductForm.get('productPrice').invalid &&
+          ProductForm.get('productPrice').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="ProductForm.get('productPrice').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="ProductForm.get('productPrice').hasError('minlength')"
+        >
+          <strong>Error!</strong> This field requires minimum 3 characters.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="URL">*Product URL:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="URL"
+        placeholder="Enter size"
+        name="productUrl"
+        formControlName="productUrl"
+      />
+      <div
+        *ngIf="
+          ProductForm.get('productUrl').invalid &&
+          ProductForm.get('productUrl').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="ProductForm.get('productUrl').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="ProductForm.get('productUrl').hasError('minlength')"
+        >
+          <strong>Error!</strong> This field requires minimum 3 characters.
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="apiFlag && !apiSuccess">
+      <strong>Error!</strong> {{ errorMessage }}
+    </div>
+    <div class="alert alert-success" *ngIf="apiFlag && apiSuccess">
+     
+      <strong  >Success!</strong> {{errorMessage}}
+      <a routerLink="/auth/login">Back to Dashboard</a>
+    </div>
+    <div class="form-group clearfix">
+      <button
+        type="button"
+        class="btn btn-secondary clearBtn"
+        (click)="clearFun()"
+        *ngIf="title !== 'View'"
+      >
+        Clear
+      </button>
+
+      <button
+        type="submit"
+        class="btn btn-primary submitBtn"
+        (click)="submitForm()"
+        *ngIf="title !== 'View'"
+      >
+        Submit
+      </button>
+      <div class="submitBtn" *ngIf="apiSpinner">
+        <div class="spinner-border"></div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <a class="navbar-brand" href="#">Ecommerce APP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    
+     
+    </ul>
+   
+  </div>
+</nav>
+
+
+
+<div class="container">
+  <h4>Admin DashBoard</h4>
+  <h6>Hello {{ loggedInUser.UserName }}</h6>
+  
+
+  <input
+  type="text" 
+  class="form-control container-fluid "
+   placeholder="search product by name" 
+   [(ngModel)]="searchTxt"
+   (keyup)="searchProduct()"/>
+  
+   <a
+   href="#"
+   class="btn btn-success addBtn"
+   [routerLink]="['/dashboard/addProduct', 'add']"
+   >Add Product</a
+ >
+   <button class=" logout btn btn-danger" (click)="logout()">Logout</button>
+  <app-product-list
+    [productArr]="filteredArr"
+    [role]="1"
+    (deleteEvent)="getProductList()"
+  ></app-product-list>
+  
+</div>

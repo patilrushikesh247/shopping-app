@@ -1,0 +1,266 @@
+<!-- <app-logo ></app-logo > -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <a class="navbar-brand" href="#">Ecommerce APP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      
+       
+      </ul>
+     
+    </div>
+  </nav>
+<div class="formContainer">
+  <h4>Register Details for SignUp</h4>
+  <form [formGroup]="RegisterForm">
+    <div class="form-group">
+      <label for="usr">*Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="usr"
+        placeholder="Enter Name"
+        name="userName"
+        formControlName="userName"
+      />
+      <div
+        *ngIf="
+          RegisterForm.get('userName').invalid &&
+          RegisterForm.get('userName').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('userName').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('userName').hasError('minlength')"
+        >
+          <strong>Error!</strong> This field requires minimum 3 characters.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">*Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        id="pwd"
+        placeholder="Enter password"
+        name="password"
+        formControlName="password"
+        (keyup)="setValidator()"
+      />
+      <div
+        *ngIf="
+          RegisterForm.get('password').invalid &&
+          RegisterForm.get('password').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('password').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('password').hasError('minlength')"
+        >
+          <strong>Error!</strong> This field requires minimum 6 characters.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cpwd">*Cofirm Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        id="cpwd"
+        placeholder="Confirm password"
+        name="confirmPassword"
+        formControlName="confirmPassword"
+        (keyup)="setValidator()"
+      />
+      <div
+        *ngIf="
+          RegisterForm.get('confirmPassword').invalid &&
+          RegisterForm.get('confirmPassword').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('confirmPassword').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('confirmPassword').hasError('minlength')"
+        >
+          <strong>Error!</strong> This field requires minimum 6 characters.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            RegisterForm.get('confirmPassword').hasError(
+              'confirmPasswordValidator'
+            )
+          "
+        >
+          <strong>Error!</strong> password does not match.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">*Email:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="email"
+        placeholder="Enter Email"
+        name="email"
+        formControlName="email"
+      />
+      <div
+        *ngIf="
+          RegisterForm.get('email').invalid && RegisterForm.get('email').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('email').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('email').hasError('minlength')"
+        >
+          <strong>Error!</strong> This field requires minimum 6 characters.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('email').hasError('email')"
+        >
+          <strong>Error!</strong> This field has invalid characters.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="dob">*DOB:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="dob"
+        placeholder="Enter DOB"
+        name="dob"
+        formControlName="dob"
+      />
+      <div
+        *ngIf="
+          RegisterForm.get('dob').invalid && RegisterForm.get('dob').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('dob').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone">*Telephone no:</label>
+      <input
+        type="number"
+        class="form-control lastBtn"
+        id="phone"
+        placeholder="Enter Telephone"
+        name="telephone"
+        formControlName="telephone"
+      />
+      <div
+        *ngIf="
+          RegisterForm.get('telephone').invalid &&
+          RegisterForm.get('telephone').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('telephone').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            RegisterForm.get('telephone').hasError('min') ||
+            RegisterForm.get('telephone').hasError('max')
+          "
+        >
+          <strong>Error!</strong> This field requires exact 10 digits.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="role">*Access Level:</label>
+      <select
+        id="role"
+        class="form-control lastBtn"
+        name="role"
+        formControlName="role"
+      >
+        <option value="1">full access</option>
+        <option value="2">read only</option>
+      </select>
+      <div
+        *ngIf="
+          RegisterForm.get('role').invalid && RegisterForm.get('role').touched
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="RegisterForm.get('role').hasError('required')"
+        >
+          <strong>Error!</strong> This field is required.
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="apiFlag && !apiSuccess">
+      <strong>Error!</strong> {{ errorMessage }}
+    </div>
+    <div class="alert alert-success" *ngIf="apiFlag && apiSuccess">
+      <strong>Success!</strong> Registration successful !!
+      <a routerLink="/auth/login">Back to Login</a>
+    </div>
+    <div class="form-group clearfix">
+      <button
+        type="button"
+        class="btn btn-secondary clearBtn"
+        (click)="clearFun()"
+      >
+        Clear
+      </button>
+
+      <button
+        type="submit"
+        class="btn btn-primary submitBtn"
+        (click)="submitForm()"
+      >
+        Submit
+      </button>
+      <div class="submitBtn" *ngIf="apiSpinner">
+        <div class="spinner-border"></div>
+      </div>
+    </div>
+  </form>
+  <a routerLink="/auth/login">Back to Login</a>
+</div>

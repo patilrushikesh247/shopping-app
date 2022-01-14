@@ -1,0 +1,96 @@
+<!-- <app-logo></app-logo> -->
+<div class="outer">
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <a class="navbar-brand" href="#">Ecommerce APP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    
+     
+    </ul>
+   
+  </div>
+</nav>
+
+<div class="formContainer">
+  <h4>Login</h4>
+
+  <form #loginForm="ngForm">
+    <div class="form-group">
+      <label for="usr">*Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="usr"
+        placeholder="Enter Name"
+        name="userName"
+        minlength="3"
+        required
+        #userNameRef="ngModel"
+        [(ngModel)]="userName"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="userNameRef.errors?.required && userNameRef.touched"
+      >
+        <strong>Error!</strong> This field is required.
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="userNameRef.errors?.minlength && userNameRef.touched"
+      >
+        <strong>Error!</strong> This field requires minimum 3 characters.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">*Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        id="pwd"
+        placeholder="Enter password"
+        name="password"
+        minlength="6"
+        required
+        #passwordRef="ngModel"
+        [(ngModel)]="password"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="passwordRef.errors?.required && passwordRef.touched"
+      >
+        <strong>Error!</strong> This field is required.
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="passwordRef.errors?.minlength && passwordRef.touched"
+      >
+        <strong>Error!</strong> This field requires minimum 6 characters.
+      </div>
+    </div>
+    <div class="form-group clearfix">
+      <button
+        type="button"
+        class="btn btn-secondary clearBtn"
+        (click)="clearFun(loginForm)"
+      >
+        Clear
+      </button>
+      <button
+        type="submit"
+        class="btn btn-primary submitBtn"
+        (click)="loginFun(loginForm)"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+  <a routerLink="/auth/forgotPassword">forgot Password</a> |
+  <a routerLink="/auth/register">Registration</a>
+</div>
+
+</div>
